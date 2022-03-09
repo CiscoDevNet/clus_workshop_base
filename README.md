@@ -1,41 +1,91 @@
 # clus_workshop_base
 
-Contains content and config for the workshop hands-on labs. 
+Contains content and config for the CLUS workshop hands-on labs.  Docker required to run the images.
 
-## Files
+## devenv_clus_base_docker_and_vpn
 
-- /devenv-dne/requirements.txt - libraries for the in-browser dev environment
-- /devenv-dne/Dockerfile - commands to  build the docker container
-- /devenv-dne/Makefile - commands to run the docker container such as "make build", "make run"
-- /devenv-dne/src/ - folders for each of the code files for each of the labs
+This folder holds the base image that has docker and VPN included.  
+
+- /devenv_clus_base_docker_and_vpn/Dockerfile - commands to  build the docker container
+- /devenv_clus_base_docker_and_vpn/Makefile - commands to run the docker container such as "make build", "make run"
+- /devenv_clus_base_docker_and_vpn/src/ - folders for each of the code files for each of the labs
+
+## devenv_clus_base_docker_and_k8s
+
+This folder holds the base image that has docker, k8s, Istio included.  
+
+- /devenv_clus_base_docker_and_k8s/Dockerfile - commands to  build the docker container
+- /devenv_clus_base_docker_and_k8s/Makefile - commands to run the docker container such as "make build", "make run"
+- /devenv_clus_base_docker_and_k8s/src/ - folders for each of the code files for each of the labs
+
 
 ## Run the in-browser dev environment locally:
 
-1. Create clone or fork of this repo
-2. Create a branch in your forked repo
-3. cd devenv-dne (make sure you're in that directory)
-4. make build (to build it)
-5. make run (to run it)
-6. Open http://localhost:1001?arg=secret to see the terminal in your browser
-7. Open localhost:1002 to see the file editor in your browser
+1. cd into the desired image
+2. make build (to build it)
+3. make run (to run it)
+4. Open http://localhost:1001?arg=secret to see the terminal in your browser
 
-# Authoring/reviewing guidelines for hands-on labs
+# How to edit files in the image
 
-* Hands-on labs must have no commands or code pastes in the first page, because that is where the “Start learning” button is and needs to be pressed to launch the container.
+Feel free to use vim, but nano is also installed
 
-* Hands-on labs must have an H2 Summary at the end of the last page (## Summary). The summary does not need to be in a separate Markdown file.
+# How to use VPN in the image
 
-* Filenames for the markdown files should follow an 01, 02 (not 001, 002) naming convention because hands-on labs should not have more than 10 markdown files.
+Set the following environment variables for example
 
-* Hands-on labs cannot have numbered lists due to a bug in the platform where all numbers show up as one when you have triplebacktick python or triplebacktick bash, and if you indent as you would typically do in Markdown, the code breaks due to added white space.
+```
+export VPN_SERVER=<vpn server address>
+export VPN_USERNAME=<user cred name>
+export VPN_PASSWORD=<user cred password>
+```
 
-* Hands-on labs generally should have separate files for each code example. 
+Then in the command line:
 
+```
+startvpn.sh &
+```
 
-* Each hands-on lab contains blank Python files so that the user can copy/paste code into that file in the browser environment. Then they execute the file in the terminal. 
+Then you should be able to ssh into the necessary IP
 
-* You will want to create a new folder for the new hands-on lab in the /devenv-dne/src/ folder and then add the Python or other script files in there.
+# How to use Kubernetes and Istio
 
-* Please make sure that each empty file contains a comment at the top such as "# Add to this file for the containers lab."
+Kubernetes and Istio are already installed and launched in the container, but you must check that the are fully up.  To do this run 
 
-* After the files have been added, you will need to create new .md files in the lab repo and setup the config.json file.
+```
+checkstatus.sh k8s
+checkstatus.sh istio
+```
+
+# How to run webapps
+
+Included in the image are three sample Flask web apps and a NAT/proxy tool called Caddy.  Port 8080 in the container is exposed for access and will be in the production deployment as well.  To test this out:
+
+```
+cd ~/src
+caddy run
+```
+
+open a new tab to http://localhost:1001/?arg=secret (as if you're opening a new terminal)
+
+```
+python app.py 
+```
+
+Open your browser to http://localhost:8080/app to see the first app
+
+Open a new tab to http://localhost:1001/?arg=secret (as if you're opening a new terminal)
+
+```
+python app2.py 
+```
+
+Open your browser to http://localhost:8080/app2 to see the second app
+
+Open a new tab to http://localhost:1001/?arg=secret (as if you're opening a new terminal)
+
+```
+python app3.py 
+```
+
+Open your browser to http://localhost:8080/app3 to see the third app
