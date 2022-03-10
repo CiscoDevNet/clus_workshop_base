@@ -1,0 +1,29 @@
+FROM developenv/devenv-pyats-base:v0.0.117f89a
+
+USER root
+
+# > VPN Setup
+RUN set -xe \
+    && apk add --no-cache \
+               --repository http://dl-cdn.alpinelinux.org/alpine/edge/community/ \
+               automake \
+               autoconf \
+               build-base \
+               libevent-dev \
+               linux-headers \
+               libevent \
+               openconnect \
+               openssh
+
+COPY config/startvpn.sh /usr/local/bin/startvpn.sh
+RUN chmod u+x /usr/local/bin/startvpn.sh
+
+ARG USER=developer
+ENV HOME /home/$USER
+RUN apk add --update sudo
+RUN echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER && chmod 0440 /etc/sudoers.d/$USER
+# < VPN Setup
+
+RUN chown -R $USER: /var/log/* && chown -R $USER: /home/$USER
+USER $USER
+WORKDIR $HOME/src
