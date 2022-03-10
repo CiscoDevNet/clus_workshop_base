@@ -1,0 +1,40 @@
+{
+    "items": [
+      {
+        "title": "Introduction",
+        "content":"0-intro.md"
+      },
+      {
+        "title": "Meraki Python SDK",
+        "content":"1-initializesdk.md"
+      }
+    ],
+    "config":{
+        "devEnv":{
+           "id":"devenv-dne-meraki",
+           "default_content":"main.py"
+        },
+        "video":{
+        },
+        "sandbox":{
+        }
+     },
+     "meta":{
+        "slug":"",
+        "time":"15",
+    "tags":
+    [
+      {
+        "title": "meraki"
+      }
+    ],
+      "authors":
+    [
+      {
+      "name": "Shweta Palande",
+      "email": "shwpalan@cisco.com"
+      }
+    ]
+   }
+  }
+  
