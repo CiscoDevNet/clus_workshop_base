@@ -1,0 +1,50 @@
+{
+  "items": [
+    {
+      "title": "Introduction",
+      "content": "01-intro.md"
+    },
+    {
+      "title": "Classes",
+      "content": "02-classes.md"
+    },
+    {
+      "title": "Modules",
+      "content": "03-modules.md"
+    },
+    {
+      "title": "Inheritance",
+      "content": "04-classes-inheritance.md"
+    },
+    {
+      "title": "Decorators",
+      "content": "05-decorators.md"
+    }
+    
+  ],
+  "config": {
+    "devEnv": {
+      "id": "devenv-py-advanced",
+      "default_content":"src/"
+    },
+    "video": {},
+    "sandbox": {}
+  },
+  "meta":{
+    "slug": "",
+    "time": "90",
+      "tags": [
+        {
+          "title": "Python"
+      },
+      {
+        "title": "Coding"
+      }
+    ],
+      "authors": [{
+          "name": "Matt DeNapoli",
+          "email": "mdenapol@cisco.com"
+      }
+    ]
+  }
+}

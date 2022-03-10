@@ -1,0 +1,41 @@
+{
+  "items": [
+    {"title": "Stepping into the realm of total network automation with pyATS",
+     "content": "01-intro.md"},
+    {"title": "Devices",
+      "content": "02-devices.md"},
+    {"title": "Network snapshot",
+      "content": "03-network-snapshot.md"},
+    {"title": "Network comparison",
+      "content": "04-comparison.md"},
+    {"title": "Snapshot a single command",
+      "content": "05-more-snapshot.md"},
+    {"title": "pyATS with Python",
+      "content": "06-intro-pyats-python.md"},
+    {"title": "Your first pyATS scripts",
+      "content": "07-scripts.md"}
+  ],
+  "config": {
+    "devEnv": {
+      "id": "devenv-pyats",
+      "default_content":"developer/src/job.py"
+    },"video": {},
+    "sandbox": {}
+  },
+  "meta":{
+    "slug": "",
+    "time": "60",
+      "tags": [{
+        "title": "PyATS"
+      },{
+        "title": "Python"
+      }],
+      "authors": [{
+          "name": "Jean-Benoit Aubin",
+          "email": "jeaubin@cisco.com"
+      },{
+          "name": "Daniel Graziano",
+          "email": "dangrazi@cisco.com"
+      }]
+  }
+}
