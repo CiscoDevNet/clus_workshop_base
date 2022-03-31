@@ -77,5 +77,24 @@ smm istio cluster attach --non-interactive -c ~/.kube/demo1.kconf ~/.kube/demo2.
 
 #### SMM dashboard access
 
-TBD
+In a new window (browser terminal http://localhost:1001)
 
+1. Proxy the exposed host port to the dashboard listening port.  The host running the `docker run` command has its port
+   30880 mapped to port 8080 inside the container with k3d running.  We'll use `caddy` to proxy that to the port
+   `smm dashboard` is using.
+   
+   ```
+   caddy reverse-proxy --from :8080 --to 127.0.0.1:50500 &
+   smm dashboard --kubeconfig ~/.kube/demo1.kconf &
+   ```
+
+2. Access the dashboard via browser on your docker host via `http://localhost:30880`
+
+   ![SMM dashboard](images/k9s_smm_dash_login.png)
+
+3. Use `smm login --kubeconfig ~/.kube/demo1.kconf** to obtain the token to login to the dashboard.
+
+4. Enter the token into the dashboard's login via the browser.
+
+**NOTE:** This currently doesn't work to login.  The SMM login token doesn't seem to be accepted and it reprompts to
+login again.
