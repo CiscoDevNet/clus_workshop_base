@@ -33,6 +33,8 @@ cd ~/tools/k3d-env
 
 The kubeconfigs are in `~/.kube/demo*.kconf**.
 
+![k3d_setup](images/k3d_setup.png)
+
 #### `k3d_setup.sh` Options
 
 | Env Var      | Default | Description                                                                                       |
@@ -46,6 +48,13 @@ The kubeconfigs are in `~/.kube/demo*.kconf**.
 
 k9s is usable as a Kubernetes cluster dashboard.  Simply run `k9s` and use `:context` to see the `demo1` and `demo2` contexts.
 
+![k9s start](images/k9s_start.png)
+
+![k9s contexts](images/k9s_contexts.png)
+
+![k9s demo1 pods](images/k9s_demo1_pods.png)
+
+
 ### SMM Setup
 
 To install SMM on cluster `demo1` and configure cluster `demo2` as a multicluster peer:
@@ -55,6 +64,16 @@ SMM_REGISTRY_PASSWORD=nIGFzhW3IfYQWW48OTqtS7EDECKn4efk smm activate --host=regis
 smm install -c ~/.kube/demo1.kconf -a
 smm istio cluster attach --non-interactive -c ~/.kube/demo1.kconf ~/.kube/demo2.kconf
 ```
+
+![smm init progress](images/smm_init.png)
+
+![k9s smm init](images/k9s_demo1_smm_init.png)
+
+![smm init done](images/smm_init_done.png)
+
+![smm cluster attach](images/smm_cluster_attach.png)
+
+![k9s smm cluster attach](images/k9s_smm_cluster_attach.png)
 
 #### SMM dashboard access
 
