@@ -1,0 +1,5 @@
+spec:
+  smm:
+   exposeDashboard:
+      meshGateway:
+        enabled: true
