@@ -17,17 +17,17 @@ Options:
 2.  Otherwise use docker directly:
 
     ```
-    docker run --privileged --name devenv-k3d -d -p 1001:9090 -p 8080:8080 -e "DEVENV_PASSWORD=secret" -e "DEVENV_PASSWORD=secret" -e "DEVENV_APP_URL=http://localhost:8080" containers.cisco.com/tiswanso/devenv-base-k3d:latest
+    docker run --privileged --name devenv-k3d -d --rm -p 1001:9090 -p 30880:8080 -e "DEVENV_PASSWORD=secret" -e "DEVENV_PASSWORD=secret" -e "DEVENV_APP_URL=http://localhost:8080" containers.cisco.com/tiswanso/devenv-base-k3d:latest
     ```
 
-Once up, new terminals can be instantiated via opening browser tabs to `localhost:1001`
+Once up, new terminals can be instantiated via opening browser tabs to `localhost:1001/?arg=secret`
 
 ### K3d cluster setup
 
 To create a pair of k3d clusters on the same docker network with metallb configured as the k8s service loadbalancer:
 
 ```
-cd ~/tools/k3d-env
+cd /home/developer/tools/k3d-env
 ./k3d_setup.sh
 ```
 
@@ -60,8 +60,21 @@ k9s is usable as a Kubernetes cluster dashboard.  Simply run `k9s` and use `:con
 To install SMM on cluster `demo1` and configure cluster `demo2` as a multicluster peer:
 
 ```
-SMM_REGISTRY_PASSWORD=nIGFzhW3IfYQWW48OTqtS7EDECKn4efk smm activate --host=registry.eticloud.io --prefix=smm --user='sa-dfe96046-00f8-492a-a6ff-3d60136ed17a' -c ~/.kube/demo1.kconf
-smm install -c ~/.kube/demo1.kconf -a
+kubectl config use-context k3d-demo1
+SMM_REGISTRY_PASSWORD=nIGFzhW3IfYQWW48OTqtS7EDECKn4efk smm activate --host=registry.eticloud.io --prefix=smm --user='sa-dfe96046-00f8-492a-a6ff-3d60136ed17a'
+smm install -a
+# May need to wait for things to come up (note: we could check a lot more pods here)
+# kubectl wait --timeout=300s --for condition=Ready -l "app in (smm)" -n smm-system pod
+
+# expose the dashboard
+kubectl patch controlplane --type=merge --patch "$(cat /home/developer/tools/smm/enable-dashboard-expose.yaml )" smm --kubeconfig ~/.kube/demo1.kconf
+smm operator reconcile
+
+# TEMP HACK: use no auth for dashboard via hacked auth container
+kubectl patch deployment smm-authentication -n smm-system --patch "$(cat /home/developer/tools/smm/tiswanso-noauthn-deploy.yaml)"
+kubectl wait --timeout=300s --for condition=Ready -l "app.kubernetes.io/name=authentication" -n smm-system pod
+
+# attach peer cluster
 smm istio cluster attach --non-interactive -c ~/.kube/demo1.kconf ~/.kube/demo2.kconf
 ```
 
@@ -77,24 +90,22 @@ smm istio cluster attach --non-interactive -c ~/.kube/demo1.kconf ~/.kube/demo2.
 
 #### SMM dashboard access
 
-In a new window (browser terminal http://localhost:1001)
+In a new window (browser terminal http://localhost:1001/?arg=secret)
 
 1. Proxy the exposed host port to the dashboard listening port.  The host running the `docker run` command has its port
    30880 mapped to port 8080 inside the container with k3d running.  We'll use `caddy` to proxy that to the port
    `smm dashboard` is using.
    
    ```
-   caddy reverse-proxy --from :8080 --to 127.0.0.1:50500 &
-   smm dashboard --kubeconfig ~/.kube/demo1.kconf &
+   ingressip=$(kubectl get svc smm-ingressgateway-external -n smm-system --kubeconfig ~/.kube/demo1.kconf  -o jsonpath="{.status.loadBalancer.ingress[0].ip}")
+   caddy reverse-proxy --from :8080 --to ${ingressip}:80 &
    ```
 
 2. Access the dashboard via browser on your docker host via `http://localhost:30880`
 
    ![SMM dashboard](images/k9s_smm_dash_login.png)
 
-3. Use `smm login --kubeconfig ~/.kube/demo1.kconf** to obtain the token to login to the dashboard.
+3. Use `smm login` to obtain the token to login to the dashboard.
 
 4. Enter the token into the dashboard's login via the browser.
 
-**NOTE:** This currently doesn't work to login.  The SMM login token doesn't seem to be accepted and it reprompts to
-login again.
