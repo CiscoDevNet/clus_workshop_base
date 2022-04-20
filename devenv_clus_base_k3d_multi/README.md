@@ -70,10 +70,6 @@ smm install -a
 kubectl patch controlplane --type=merge --patch "$(cat /home/developer/tools/smm/enable-dashboard-expose.yaml )" smm --kubeconfig ~/.kube/demo1.kconf
 smm operator reconcile
 
-# TEMP HACK: use no auth for dashboard via hacked auth container
-kubectl patch deployment smm-authentication -n smm-system --patch "$(cat /home/developer/tools/smm/tiswanso-noauthn-deploy.yaml)"
-kubectl wait --timeout=300s --for condition=Ready -l "app.kubernetes.io/name=authentication" -n smm-system pod
-
 # attach peer cluster
 smm istio cluster attach --non-interactive -c ~/.kube/demo1.kconf ~/.kube/demo2.kconf
 ```

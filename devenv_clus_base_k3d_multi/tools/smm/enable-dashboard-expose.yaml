@@ -1,5 +1,7 @@
 spec:
   smm:
-   exposeDashboard:
+    exposeDashboard:
       meshGateway:
         enabled: true
+    auth:
+      forceUnsecureCookies: true
