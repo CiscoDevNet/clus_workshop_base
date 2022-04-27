@@ -18,6 +18,14 @@ This folder holds the base image that has docker, k8s, Istio included.
 - /devenv_clus_base_docker_and_k8s/Makefile - commands to run the docker container such as "make build", "make run"
 - /devenv_clus_base_docker_and_k8s/src/ - folders for each of the code files for each of the labs
 
+## devenv_clus_base_docker_and_k8s_nonistio
+
+This folder holds the base image that has docker.  
+
+- /devenv_clus_base_docker_and_k8s_nonistio/Dockerfile - commands to  build the docker container
+- /devenv_clus_base_docker_and_k8s_nonistio/Makefile - commands to run the docker container such as "make build", "make run"
+- /devenv_clus_base_docker_and_k8s_nonistio/src/ - folders for each of the code files for each of the labs
+
 ## devenv_clus_base_pyats_vpn
 
 This folder holds the base image that has pyats and vpn.  
