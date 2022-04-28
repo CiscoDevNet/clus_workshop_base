@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "The traceroute command is not available in this environment for security reasons."
+echo "Please run traceroute in a local environment."
