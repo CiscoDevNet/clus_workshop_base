@@ -101,7 +101,4 @@ In a new window (browser terminal http://localhost:1001/?arg=secret)
 
    ![SMM dashboard](images/k9s_smm_dash_login.png)
 
-3. Use `smm login` to obtain the token to login to the dashboard.
-
-4. Enter the token into the dashboard's login via the browser.
-
+NOTE: you shouldn't need to use `smm login` to obtain the token to login to the dashboard.

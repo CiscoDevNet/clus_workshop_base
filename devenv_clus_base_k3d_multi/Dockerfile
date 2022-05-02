@@ -24,5 +24,5 @@ COPY devenv/devenv-init.sh /home/developer/bin/devenv-init.sh
 
 # Install SMM
 COPY bin /home/developer/bin-rel
-RUN tar zxvfO /home/developer/bin-rel/smm/smm_1.9.1-rc.2_linux_amd64.tar.gz smm > /usr/local/bin/smm && chmod +x /usr/local/bin/smm
+RUN tar zxvfO /home/developer/bin-rel/smm/smm_1.9.1_linux_amd64.tar.gz smm > /usr/local/bin/smm && chmod +x /usr/local/bin/smm
 
