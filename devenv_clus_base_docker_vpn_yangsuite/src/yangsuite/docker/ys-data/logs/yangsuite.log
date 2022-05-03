@@ -1,0 +1,246 @@
+[2022-05-02 13:33:08.131 DEBUG                     yangsuite.urls :  92]
+Including ysdevices.urls at 'devices'
+[2022-05-02 13:33:08.195 DEBUG                     yangsuite.urls :  92]
+Including yscoverage.urls at 'coverage'
+[2022-05-02 13:33:08.200 DEBUG                     yangsuite.urls :  92]
+Including ysgnmi.urls at 'gnmi'
+[2022-05-02 13:33:08.204 DEBUG                     yangsuite.urls :  92]
+Including ysrestconf.urls at 'restconf'
+[2022-05-02 13:33:08.207 DEBUG                     yangsuite.urls :  92]
+Including ysyangtree.urls at 'yangtree'
+[2022-05-02 13:33:08.209 DEBUG                     yangsuite.urls :  92]
+Including ysnetconf.urls at 'netconf'
+[2022-05-02 13:33:08.211 DEBUG                     yangsuite.urls :  92]
+Including ysfilemanager.urls at 'filemanager'
+[2022-05-02 13:33:08.213 DEBUG                     yangsuite.urls :  92]
+Including ysgrpctelemetry.urls at 'grpctelemetry'
+[2022-05-02 13:33:09.568 DEBUG                     yangsuite.urls :  92]
+Including ysdevices.urls at 'devices'
+[2022-05-02 13:33:09.627 DEBUG                     yangsuite.urls :  92]
+Including yscoverage.urls at 'coverage'
+[2022-05-02 13:33:09.633 DEBUG                     yangsuite.urls :  92]
+Including ysgnmi.urls at 'gnmi'
+[2022-05-02 13:33:09.638 DEBUG                     yangsuite.urls :  92]
+Including ysrestconf.urls at 'restconf'
+[2022-05-02 13:33:09.643 DEBUG                     yangsuite.urls :  92]
+Including ysyangtree.urls at 'yangtree'
+[2022-05-02 13:33:09.645 DEBUG                     yangsuite.urls :  92]
+Including ysnetconf.urls at 'netconf'
+[2022-05-02 13:33:09.647 DEBUG                     yangsuite.urls :  92]
+Including ysfilemanager.urls at 'filemanager'
+[2022-05-02 13:33:09.650 DEBUG                     yangsuite.urls :  92]
+Including ysgrpctelemetry.urls at 'grpctelemetry'
+[2022-05-02 13:34:29.998 DEBUG                     yangsuite.urls :  92]
+Including ysdevices.urls at 'devices'
+[2022-05-02 13:34:30.094 DEBUG                     yangsuite.urls :  92]
+Including yscoverage.urls at 'coverage'
+[2022-05-02 13:34:30.101 DEBUG                     yangsuite.urls :  92]
+Including ysgnmi.urls at 'gnmi'
+[2022-05-02 13:34:30.107 DEBUG                     yangsuite.urls :  92]
+Including ysrestconf.urls at 'restconf'
+[2022-05-02 13:34:30.112 DEBUG                     yangsuite.urls :  92]
+Including ysyangtree.urls at 'yangtree'
+[2022-05-02 13:34:30.118 DEBUG                     yangsuite.urls :  92]
+Including ysnetconf.urls at 'netconf'
+[2022-05-02 13:34:30.121 DEBUG                     yangsuite.urls :  92]
+Including ysfilemanager.urls at 'filemanager'
+[2022-05-02 13:34:30.125 DEBUG                     yangsuite.urls :  92]
+Including ysgrpctelemetry.urls at 'grpctelemetry'
+[2022-05-02 13:34:30.331 DEBUG                     yangsuite.urls :  92]
+Including ysdevices.urls at 'devices'
+[2022-05-02 13:34:30.455 DEBUG                     yangsuite.urls :  92]
+Including yscoverage.urls at 'coverage'
+[2022-05-02 13:34:30.462 DEBUG                     yangsuite.urls :  92]
+Including ysgnmi.urls at 'gnmi'
+[2022-05-02 13:34:30.470 DEBUG                     yangsuite.urls :  92]
+Including ysrestconf.urls at 'restconf'
+[2022-05-02 13:34:30.477 DEBUG                     yangsuite.urls :  92]
+Including ysyangtree.urls at 'yangtree'
+[2022-05-02 13:34:30.480 DEBUG                     yangsuite.urls :  92]
+Including ysnetconf.urls at 'netconf'
+[2022-05-02 13:34:30.484 DEBUG                     yangsuite.urls :  92]
+Including ysfilemanager.urls at 'filemanager'
+[2022-05-02 13:34:30.487 DEBUG                     yangsuite.urls :  92]
+Including ysgrpctelemetry.urls at 'grpctelemetry'
+[2022-05-02 13:34:30.677 DEBUG                     yangsuite.urls :  92]
+Including ysdevices.urls at 'devices'
+[2022-05-02 13:34:30.782 DEBUG                     yangsuite.urls :  92]
+Including yscoverage.urls at 'coverage'
+[2022-05-02 13:34:30.788 DEBUG                     yangsuite.urls :  92]
+Including ysgnmi.urls at 'gnmi'
+[2022-05-02 13:34:30.792 DEBUG                     yangsuite.urls :  92]
+Including ysrestconf.urls at 'restconf'
+[2022-05-02 13:34:30.799 DEBUG                     yangsuite.urls :  92]
+Including ysyangtree.urls at 'yangtree'
+[2022-05-02 13:34:30.803 DEBUG                     yangsuite.urls :  92]
+Including ysnetconf.urls at 'netconf'
+[2022-05-02 13:34:30.805 DEBUG                     yangsuite.urls :  92]
+Including ysfilemanager.urls at 'filemanager'
+[2022-05-02 13:34:30.808 DEBUG                     yangsuite.urls :  92]
+Including ysgrpctelemetry.urls at 'grpctelemetry'
+[2022-05-02 13:34:30.866 DEBUG       yangsuite.context_processors : 137]
+Adding menus from yangsuite
+[2022-05-02 13:34:30.870 DEBUG       yangsuite.context_processors : 173]
+Added menu 'Admin'; menus are now ('Admin',)
+[2022-05-02 13:34:30.872 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'Manage users → /admin' in menu 'Admin'
+[2022-05-02 13:34:30.875 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'Manage plugins → /yangsuite/plugins/' in menu 'Admin'
+[2022-05-02 13:34:30.877 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'View logs → /yangsuite/logs' in menu 'Admin'
+[2022-05-02 13:34:30.879 DEBUG       yangsuite.context_processors : 173]
+Added menu 'Setup'; menus are now ('Admin', 'Setup')
+[2022-05-02 13:34:30.881 DEBUG       yangsuite.context_processors : 137]
+Adding menus from ysfilemanager
+[2022-05-02 13:34:30.883 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'YANG files and repositories → /filemanager/repository/manage/' in menu 'Setup'
+[2022-05-02 13:34:30.886 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'YANG module sets → /filemanager/yangsets/manage/' in menu 'Setup'
+[2022-05-02 13:34:30.887 DEBUG       yangsuite.context_processors : 137]
+Adding menus from ysdevices
+[2022-05-02 13:34:30.889 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'Device profiles → /devices/devprofile' in menu 'Setup'
+[2022-05-02 13:34:30.891 DEBUG       yangsuite.context_processors : 137]
+Adding menus from ysyangtree
+[2022-05-02 13:34:30.893 DEBUG       yangsuite.context_processors : 173]
+Added menu 'Explore'; menus are now ('Admin', 'Setup', 'Explore')
+[2022-05-02 13:34:30.895 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'YANG → /yangtree/explore' in menu 'Explore'
+[2022-05-02 13:34:30.899 DEBUG       yangsuite.context_processors : 137]
+Adding menus from yscoverage
+[2022-05-02 13:34:30.901 DEBUG       yangsuite.context_processors : 173]
+Added menu 'Analytics'; menus are now ('Admin', 'Setup', 'Explore', 'Analytics')
+[2022-05-02 13:34:30.904 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'Datasets and diffs → /coverage/datasets' in menu 'Analytics'
+[2022-05-02 13:34:30.907 DEBUG       yangsuite.context_processors : 137]
+Adding menus from ysgnmi
+[2022-05-02 13:34:30.909 DEBUG       yangsuite.context_processors : 173]
+Added menu 'Protocols'; menus are now ('Admin', 'Setup', 'Explore', 'Analytics', 'Protocols')
+[2022-05-02 13:34:30.911 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'gNMI → /gnmi/explore' in menu 'Protocols'
+[2022-05-02 13:34:30.914 DEBUG       yangsuite.context_processors : 137]
+Adding menus from ysgrpctelemetry
+[2022-05-02 13:34:30.916 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'gRPC telemetry → /grpctelemetry' in menu 'Protocols'
+[2022-05-02 13:34:30.918 DEBUG       yangsuite.context_processors : 137]
+Adding menus from ysnetconf
+[2022-05-02 13:34:30.920 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'NETCONF → /netconf/getyang' in menu 'Protocols'
+[2022-05-02 13:34:30.923 DEBUG       yangsuite.context_processors : 137]
+Adding menus from ysrestconf
+[2022-05-02 13:34:30.925 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'RESTCONF → /restconf' in menu 'Protocols'
+[2022-05-02 13:34:30.927 INFO        yangsuite.context_processors : 122]
+yangsuite_menus is now: OrderedDict([('Admin', [YSMenuItem(text='Manage users', url='/admin'), YSMenuItem(text='Manage plugins', url='/yangsuite/plugins/'), YSMenuItem(text='View logs', url='/yangsuite/logs')]), ('Setup', [YSMenuItem(text='YANG files and repositories', url='/filemanager/repository/manage/'), YSMenuItem(text='YANG module sets', url='/filemanager/yangsets/manage/'), YSMenuItem(text='Device profiles', url='/devices/devprofile')]), ('Analytics', [YSMenuItem(text='Datasets and diffs', url='/coverage/datasets')]), ('Explore', [YSMenuItem(text='YANG', url='/yangtree/explore')]), ('Protocols', [YSMenuItem(text='gNMI', url='/gnmi/explore'), YSMenuItem(text='gRPC telemetry', url='/grpctelemetry'), YSMenuItem(text='NETCONF', url='/netconf/getyang'), YSMenuItem(text='RESTCONF', url='/restconf')])])
+[2022-05-02 13:34:38.968 DEBUG                     yangsuite.urls :  92]
+Including ysdevices.urls at 'devices'
+[2022-05-02 13:34:39.082 DEBUG                     yangsuite.urls :  92]
+Including yscoverage.urls at 'coverage'
+[2022-05-02 13:34:39.087 DEBUG                     yangsuite.urls :  92]
+Including ysgnmi.urls at 'gnmi'
+[2022-05-02 13:34:39.092 DEBUG                     yangsuite.urls :  92]
+Including ysrestconf.urls at 'restconf'
+[2022-05-02 13:34:39.098 DEBUG                     yangsuite.urls :  92]
+Including ysyangtree.urls at 'yangtree'
+[2022-05-02 13:34:39.102 DEBUG                     yangsuite.urls :  92]
+Including ysnetconf.urls at 'netconf'
+[2022-05-02 13:34:39.104 DEBUG                     yangsuite.urls :  92]
+Including ysfilemanager.urls at 'filemanager'
+[2022-05-02 13:34:39.107 DEBUG                     yangsuite.urls :  92]
+Including ysgrpctelemetry.urls at 'grpctelemetry'
+[2022-05-02 13:34:39.136 DEBUG       yangsuite.context_processors : 137]
+Adding menus from yangsuite
+[2022-05-02 13:34:39.139 DEBUG       yangsuite.context_processors : 173]
+Added menu 'Admin'; menus are now ('Admin',)
+[2022-05-02 13:34:39.141 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'Manage users → /admin' in menu 'Admin'
+[2022-05-02 13:34:39.143 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'Manage plugins → /yangsuite/plugins/' in menu 'Admin'
+[2022-05-02 13:34:39.145 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'View logs → /yangsuite/logs' in menu 'Admin'
+[2022-05-02 13:34:39.147 DEBUG       yangsuite.context_processors : 173]
+Added menu 'Setup'; menus are now ('Admin', 'Setup')
+[2022-05-02 13:34:39.150 DEBUG       yangsuite.context_processors : 137]
+Adding menus from ysfilemanager
+[2022-05-02 13:34:39.152 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'YANG files and repositories → /filemanager/repository/manage/' in menu 'Setup'
+[2022-05-02 13:34:39.155 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'YANG module sets → /filemanager/yangsets/manage/' in menu 'Setup'
+[2022-05-02 13:34:39.157 DEBUG       yangsuite.context_processors : 137]
+Adding menus from ysdevices
+[2022-05-02 13:34:39.159 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'Device profiles → /devices/devprofile' in menu 'Setup'
+[2022-05-02 13:34:39.161 DEBUG       yangsuite.context_processors : 137]
+Adding menus from ysyangtree
+[2022-05-02 13:34:39.163 DEBUG       yangsuite.context_processors : 173]
+Added menu 'Explore'; menus are now ('Admin', 'Setup', 'Explore')
+[2022-05-02 13:34:39.165 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'YANG → /yangtree/explore' in menu 'Explore'
+[2022-05-02 13:34:39.167 DEBUG       yangsuite.context_processors : 137]
+Adding menus from yscoverage
+[2022-05-02 13:34:39.169 DEBUG       yangsuite.context_processors : 173]
+Added menu 'Analytics'; menus are now ('Admin', 'Setup', 'Explore', 'Analytics')
+[2022-05-02 13:34:39.170 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'Datasets and diffs → /coverage/datasets' in menu 'Analytics'
+[2022-05-02 13:34:39.172 DEBUG       yangsuite.context_processors : 137]
+Adding menus from ysgnmi
+[2022-05-02 13:34:39.174 DEBUG       yangsuite.context_processors : 173]
+Added menu 'Protocols'; menus are now ('Admin', 'Setup', 'Explore', 'Analytics', 'Protocols')
+[2022-05-02 13:34:39.176 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'gNMI → /gnmi/explore' in menu 'Protocols'
+[2022-05-02 13:34:39.179 DEBUG       yangsuite.context_processors : 137]
+Adding menus from ysgrpctelemetry
+[2022-05-02 13:34:39.182 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'gRPC telemetry → /grpctelemetry' in menu 'Protocols'
+[2022-05-02 13:34:39.184 DEBUG       yangsuite.context_processors : 137]
+Adding menus from ysnetconf
+[2022-05-02 13:34:39.186 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'NETCONF → /netconf/getyang' in menu 'Protocols'
+[2022-05-02 13:34:39.188 DEBUG       yangsuite.context_processors : 137]
+Adding menus from ysrestconf
+[2022-05-02 13:34:39.190 DEBUG       yangsuite.context_processors : 187]
+Added menu item 'RESTCONF → /restconf' in menu 'Protocols'
+[2022-05-02 13:34:39.192 INFO        yangsuite.context_processors : 122]
+yangsuite_menus is now: OrderedDict([('Admin', [YSMenuItem(text='Manage users', url='/admin'), YSMenuItem(text='Manage plugins', url='/yangsuite/plugins/'), YSMenuItem(text='View logs', url='/yangsuite/logs')]), ('Setup', [YSMenuItem(text='YANG files and repositories', url='/filemanager/repository/manage/'), YSMenuItem(text='YANG module sets', url='/filemanager/yangsets/manage/'), YSMenuItem(text='Device profiles', url='/devices/devprofile')]), ('Analytics', [YSMenuItem(text='Datasets and diffs', url='/coverage/datasets')]), ('Explore', [YSMenuItem(text='YANG', url='/yangtree/explore')]), ('Protocols', [YSMenuItem(text='gNMI', url='/gnmi/explore'), YSMenuItem(text='gRPC telemetry', url='/grpctelemetry'), YSMenuItem(text='NETCONF', url='/netconf/getyang'), YSMenuItem(text='RESTCONF', url='/restconf')])])
+[2022-05-02 13:34:46.467 INFO                     yangsuite.paths : 269]
+Creating new 'user' directory path /ys-data/users
+[2022-05-02 13:34:46.472 INFO                     yangsuite.paths : 269]
+Creating new 'user' directory path /ys-data/users/developer
+[2022-05-02 13:34:46.520 DEBUG                    yangsuite.views : 457]
+Sorted pages based on page_order ['introduction']: []
+[2022-05-02 13:34:46.524 DEBUG                    yangsuite.views : 457]
+Sorted pages based on page_order ['index']: [{'title': 'Managing device profiles', 'content': 'devices'}, {'title': 'Setting up YANG Suite TLS/SSL', 'content': 'tls-ssl'}]
+[2022-05-02 13:34:46.527 DEBUG                    yangsuite.views : 457]
+Sorted pages based on page_order ['index']: [{'title': 'Datasets', 'content': 'datasets'}]
+[2022-05-02 13:34:46.530 DEBUG                    yangsuite.views : 457]
+Sorted pages based on page_order ['index']: []
+[2022-05-02 13:34:46.532 DEBUG                    yangsuite.views : 457]
+Sorted pages based on page_order ['restconf']: [{'title': 'YANG Suite RESTCONF', 'content': 'restconf'}]
+[2022-05-02 13:34:46.535 DEBUG                    yangsuite.views : 457]
+Sorted pages based on page_order ['index']: [{'title': 'Exploring YANG Models', 'content': 'explore'}]
+[2022-05-02 13:34:46.539 DEBUG                    yangsuite.views : 457]
+Sorted pages based on page_order ['rpcs', 'notifications', 'tasks', 'lock-unlock']: [{'title': 'Using NETCONF RPCs', 'content': 'rpcs'}, {'title': 'Working with NETCONF Notification Streams', 'content': 'notifications'}, {'title': 'Using Replays for repeated workflows', 'content': 'tasks'}, {'title': 'Locking and unlocking datastores', 'content': 'lock-unlock'}]
+[2022-05-02 13:34:46.543 DEBUG                    yangsuite.views : 457]
+Sorted pages based on page_order ['create_repository', 'upload_schemas', 'download_schemas', 'scp_schemas', 'git_schemas', 'define_yangset']: [{'title': 'Constructing and populating a YANG module repository', 'content': 'create_repository'}, {'title': 'Uploading YANG files from the local filesystem to a YANG repository', 'content': 'upload_schemas'}, {'title': 'Downloading YANG files via NETCONF from a device to a YANG repository', 'content': 'download_schemas'}, {'title': 'Copying YANG modules via SCP from a server to a YANG repository', 'content': 'scp_schemas'}, {'title': 'Importing YANG modules from a Git repository to a YANG repository', 'content': 'git_schemas'}, {'title': 'Defining a YANG module set', 'content': 'define_yangset'}]
+[2022-05-02 13:34:46.546 DEBUG                    yangsuite.views : 457]
+Sorted pages based on page_order ['index']: []
+[2022-05-02 13:34:46.740 INFO                     yangsuite.paths : 269]
+Creating new 'devices_dir' directory path /ys-data/devices
+[2022-05-02 13:34:46.755 DEBUG     yangsuite.ysdevices.devprofile : 187]
+Device profile list (filter: None): []
+[2022-05-02 13:34:46.910 DEBUG                     yangsuite.urls :  92]
+Including ysdevices.urls at 'devices'
+[2022-05-02 13:34:47.012 DEBUG                     yangsuite.urls :  92]
+Including yscoverage.urls at 'coverage'
+[2022-05-02 13:34:47.019 DEBUG                     yangsuite.urls :  92]
+Including ysgnmi.urls at 'gnmi'
+[2022-05-02 13:34:47.025 DEBUG                     yangsuite.urls :  92]
+Including ysrestconf.urls at 'restconf'
+[2022-05-02 13:34:47.030 DEBUG                     yangsuite.urls :  92]
+Including ysyangtree.urls at 'yangtree'
+[2022-05-02 13:34:47.033 DEBUG                     yangsuite.urls :  92]
+Including ysnetconf.urls at 'netconf'
+[2022-05-02 13:34:47.035 DEBUG                     yangsuite.urls :  92]
+Including ysfilemanager.urls at 'filemanager'
+[2022-05-02 13:34:47.038 DEBUG                     yangsuite.urls :  92]
+Including ysgrpctelemetry.urls at 'grpctelemetry'
