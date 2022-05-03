@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "The ping command is not available in this environment for security reasons."
+echo "Please run ping in a local environment."

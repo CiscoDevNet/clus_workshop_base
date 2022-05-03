@@ -1,6 +1,6 @@
-IMAGENAME := "developenv/devenv-base-bootstrap-dind-vpn"
+IMAGENAME := "developenv/devenv_clus_base_docker_and_vpn"
 VERSION := "latest"
-INSTANCENAME := "devenv-base-bootstrap-dind-vpn"
+INSTANCENAME := "devenv_clus_base_docker_and_vpn"
 
 build:
 	@echo "Building image $(IMAGENAME)"

@@ -1,6 +1,6 @@
-IMAGENAME := "developenv/devenv-base-bootstrap-dind-kind-istio-minimal"
+IMAGENAME := "developenv/devenv_clus_base_docker_and_k8sl"
 VERSION := "latest"
-INSTANCENAME :="devenv-base-bootstrap-dind-kind-istio-minimal"
+INSTANCENAME :="devenv_clus_base_docker_and_k8s"
 
 build:
 	@echo "Building image $(IMAGENAME)"
