@@ -65,7 +65,7 @@ to
 #  }
 
   server {
-    listen 80 http2;
+    listen 80;
     server_name localhost;
     #listen [::]:443 ssl;
     include snippets/ssl-signed.conf;
@@ -81,6 +81,8 @@ This shouldn't be changed for online/production however as https is supported in
 Once done, to run yangsuite: cd ~/src/yangsuite/docker ; docker-compose up.  Should take about 5 mins to spin up.
 
 Open a new browser tab to http://localhost:1001/?arg=secret and type caddy run. 
+
+Open a new browser and navigate to localhost:8080.  Username is developer, password is developer
 
 - /devenv_clus_base_docker_vpn_yangsuite/Dockerfile - commands to  build the docker container
 - /devenv_clus_base_docker_vpn_yangsuite/Makefile - commands to run the docker container such as "make build", "make run"
