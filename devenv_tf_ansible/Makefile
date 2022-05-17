@@ -1,6 +1,6 @@
-IMAGENAME := "developenv/devenv_tf_ansible"
+IMAGENAME := "developenv/devenv-tf-ansible"
 VERSION := "latest"
-INSTANCENAME := "devenv_tf_ansible"
+INSTANCENAME :="devenv-tf-ansible"
 
 build:
 	@echo "Building image $(IMAGENAME)"
