@@ -1,5 +1,5 @@
 IMAGENAME := "developenv/devenv_tf_ansible"
-VERSION := "0.98"
+VERSION := "latest"
 INSTANCENAME := "devenv_tf_ansible"
 
 build:
