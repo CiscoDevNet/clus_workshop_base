@@ -22,26 +22,32 @@ Options:
 
 Once up, new terminals can be instantiated via opening browser tabs to `localhost:1001/?arg=secret`
 
-### K3d cluster setup
+### Cluster setup
 
 To create a pair of k3d clusters on the same docker network with metallb configured as the k8s service loadbalancer:
 
 ```
-cd /home/developer/tools/k3d-env
-./k3d_setup.sh
+cd /home/developer/tools/cluster-env
+ ./cluster_setup.sh
 ```
 
 The kubeconfigs are in `~/.kube/demo*.kconf**.
 
-![k3d_setup](images/k3d_setup.png)
+![cluster_setup](images/cluster_setup.png**
 
-#### `k3d_setup.sh` Options
+**NOTE:** The default cluster type is `kind` but `k3d` clusters will be created via:
+```
+CLUSTER_TYPE=k3d ./cluster_setup.sh
+```
 
-| Env Var      | Default | Description                                                                                       |
-|--------------|---------|---------------------------------------------------------------------------------------------------|
-| K3D_NUMPEERS |     1 | Number of peer clusters to create                                                                    |
-| K3D_NAMEPRFX | demo | Name prefix to use for clusters.  Each cluster instance will have a number after the name prefix.     |
-| K3D_API_PORT | 6135 | Starting port number to expose the k8s API server on--subsequent cluster instance will increase by 1. |
+#### `cluster_setup.sh` Options
+
+| Env Var      | Default | Description                                                                                           |
+|--------------+---------+-------------------------------------------------------------------------------------------------------|
+| K3D_NUMPEERS |       1 | Number of peer clusters to create                                                                     |
+| K3D_NAMEPRFX |    demo | Name prefix to use for clusters.  Each cluster instance will have a number after the name prefix.     |
+| K3D_API_PORT |    6135 | Starting port number to expose the k8s API server on--subsequent cluster instance will increase by 1. |
+| CLUSTER_TYPE | kind    | Set to `k3d` to use k3d clusters                                                                       |
 
 
 ### k9s
@@ -61,17 +67,17 @@ To install SMM on cluster `demo1` and configure cluster `demo2` as a multicluste
 
 ```
 kubectl config use-context k3d-demo1
-SMM_REGISTRY_PASSWORD=nIGFzhW3IfYQWW48OTqtS7EDECKn4efk smm activate --host=registry.eticloud.io --prefix=smm --user='sa-dfe96046-00f8-492a-a6ff-3d60136ed17a'
-smm install -a
+SMM_REGISTRY_PASSWORD=nIGFzhW3IfYQWW48OTqtS7EDECKn4efk smm --non-interactive activate --host=registry.eticloud.io --prefix=smm --user='sa-dfe96046-00f8-492a-a6ff-3d60136ed17a'
+smm --non-interactive install -a
 # May need to wait for things to come up (note: we could check a lot more pods here)
 # kubectl wait --timeout=300s --for condition=Ready -l "app in (smm)" -n smm-system pod
 
 # expose the dashboard
 kubectl patch controlplane --type=merge --patch "$(cat /home/developer/tools/smm/enable-dashboard-expose.yaml )" smm --kubeconfig ~/.kube/demo1.kconf
-smm operator reconcile
+smm --non-interactive operator reconcile
 
 # attach peer cluster
-smm istio cluster attach --non-interactive -c ~/.kube/demo1.kconf ~/.kube/demo2.kconf
+smm --non-interactive istio cluster attach --non-interactive -c ~/.kube/demo1.kconf ~/.kube/demo2.kconf
 ```
 
 ![smm init progress](images/smm_init.png)
