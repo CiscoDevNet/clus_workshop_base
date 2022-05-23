@@ -31,9 +31,9 @@ cd /home/developer/tools/cluster-env
  ./cluster_setup.sh
 ```
 
-The kubeconfigs are in `~/.kube/demo*.kconf**.
+The kubeconfigs are in `~/.kube/demo*.kconf`.
 
-![cluster_setup](images/cluster_setup.png**
+![cluster_setup](images/k3d_setup.png)
 
 **NOTE:** The default cluster type is `kind` but `k3d` clusters will be created via:
 ```
@@ -42,12 +42,13 @@ CLUSTER_TYPE=k3d ./cluster_setup.sh
 
 #### `cluster_setup.sh` Options
 
+
 | Env Var      | Default | Description                                                                                           |
-|--------------+---------+-------------------------------------------------------------------------------------------------------|
-| K3D_NUMPEERS |       1 | Number of peer clusters to create                                                                     |
-| K3D_NAMEPRFX |    demo | Name prefix to use for clusters.  Each cluster instance will have a number after the name prefix.     |
-| K3D_API_PORT |    6135 | Starting port number to expose the k8s API server on--subsequent cluster instance will increase by 1. |
-| CLUSTER_TYPE | kind    | Set to `k3d` to use k3d clusters                                                                       |
+|--------------|---------|-------------------------------------------------------------------------------------------------------  |
+| K3D_NUMPEERS | 1       | Number of peer clusters to create                                                                     |
+| K3D_NAMEPRFX | demo    | Name prefix to use for clusters.  Each cluster instance will have a number after the name prefix.     |
+| K3D_API_PORT | 6135    | Starting port number to expose the k8s API server on--subsequent cluster instance will increase by 1. |
+| CLUSTER_TYPE | kind    | Set to `k3d` to use k3d clusters                                                                      |
 
 
 ### k9s
