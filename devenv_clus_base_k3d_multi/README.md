@@ -66,15 +66,12 @@ k9s is usable as a Kubernetes cluster dashboard.  Simply run `k9s` and use `:con
 To install SMM on cluster `demo1` and configure cluster `demo2` as a multicluster peer:
 
 ```
-kubectl config use-context k3d-demo1
-SMM_REGISTRY_PASSWORD=nIGFzhW3IfYQWW48OTqtS7EDECKn4efk smm --non-interactive activate --host=registry.eticloud.io --prefix=smm --user='sa-dfe96046-00f8-492a-a6ff-3d60136ed17a'
-smm --non-interactive install -a
-# May need to wait for things to come up (note: we could check a lot more pods here)
-# kubectl wait --timeout=300s --for condition=Ready -l "app in (smm)" -n smm-system pod
+SMM_REGISTRY_PASSWORD=nIGFzhW3IfYQWW48OTqtS7EDECKn4efk smm --non-interactive activate -c ~/.kube/demo1.kconf --host=registry.eticloud.io --prefix=smm --user='sa-dfe96046-00f8-492a-a6ff-3d60136ed17a'
+smm --non-interactive install -a -c ~/.kube/demo1.kconf
 
 # expose the dashboard
 kubectl patch controlplane --type=merge --patch "$(cat /home/developer/tools/smm/enable-dashboard-expose.yaml )" smm --kubeconfig ~/.kube/demo1.kconf
-smm --non-interactive operator reconcile
+smm --non-interactive operator reconcile -c ~/.kube/demo1.kconf
 
 # attach peer cluster
 smm --non-interactive istio cluster attach --non-interactive -c ~/.kube/demo1.kconf ~/.kube/demo2.kconf
