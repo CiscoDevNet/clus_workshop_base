@@ -2,18 +2,25 @@
 
 CLUSTER_TYPE=${CLUSTER_TYPE:kind}
 HOSTIP_MATCH=${HOSTIP_MATCH:-10.87}
-K3D_API_ADDR=$(ip a | grep inet.${HOSTIP_MATCH} |  awk '{ print $2 }' | cut -d '/' -f 1)
+#K8S_API_ADDR=$(ip a | grep inet.${HOSTIP_MATCH} |  awk '{ print $2 }' | cut -d '/' -f 1)
 #K3D_API_ADDR=${K3D_API_ADDR:-127.0.0.1}
 K3D_NAMEPRFX=${K3D_NAMEPRF:-demo}
 GLOBAL_METALLB_PRFX=${GLOBAL_METALLB_PRFX:-250}
 K3D_API_PORT=${K3D_API_PORT:-6135}
 K3D_NUMPEERS=${K3D_NUMPEERS:-1}
 
-if [[ -z ${K3D_API_ADDR} ]]; then
-    K3D_API_ADDR=$(hostname -i)
+if [[ -z ${K8S_API_ADDR} ]]; then
+    K8S_API_ADDR=$(hostname -i)
     #K3D_API_SAN=${K3D_API_ADDR}
 fi
 
+# create_cluster
+# - creates either a kind or a k3d cluster depending on the $CLUSTER_TYPE global variable
+#
+# NOTE: Since SMM multicluster peers need to be able to reach each other's api-server we need to use
+# a reachable api-server address in the cluster creation so the kubeconfig server field is usable from
+# within the clusters.
+#
 function create_cluster {
     local name=$1; shift
     if [[ $# > 1 ]]; then
@@ -22,10 +29,27 @@ function create_cluster {
     fi
 
     if [[ "$CLUSTER_TYPE" == "k3d" ]]; then
-        k3d cluster create ${name} --no-lb --network k3d-${K3D_NAMEPRFX} --k3s-arg '--disable=servicelb' --k3s-arg '--disable=traefik' ${K3D_API_SAN:- --k3s-arg "--tls-san=${K3D_API_SAN}"} --k3s-arg '--disable-network-policy' --k3s-arg '--flannel-backend=none' --k3s-arg 'cloud-provider=external' --k3s-arg '--disable-cloud-controller' --volume "$(pwd)/calico.yaml:/var/lib/rancher/k3s/server/manifests/calico.yaml" --volume $(pwd)/resolv.conf:/etc/resolv.conf
+        apiport=$((${K3D_API_PORT} + ${portoffset}))
+        k3d cluster create ${name} --no-lb --api-port ${apiaddr}:${apiport} --network k3d-${K3D_NAMEPRFX} --k3s-arg '--disable=servicelb' --k3s-arg '--disable=traefik' ${K3D_API_SAN:- --k3s-arg "--tls-san=${K3D_API_SAN}"} --k3s-arg '--disable-network-policy' --k3s-arg '--flannel-backend=none' --k3s-arg 'cloud-provider=external' --k3s-arg '--disable-cloud-controller' --volume "$(pwd)/calico.yaml:/var/lib/rancher/k3s/server/manifests/calico.yaml" --volume $(pwd)/resolv.conf:/etc/resolv.conf
         k3d kubeconfig get ${name} > ~/.kube/${name}.kconf
     else
-        kind create cluster --name ${name} --image kindest/node:v1.22.9@sha256:6e57a6b0c493c7d7183a1151acff0bfa44bf37eb668826bf00da5637c55b6d5e
+        cat <<EOF > kind_config.yaml
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+networking:
+  # WARNING: It is _strongly_ recommended that you keep this the default
+  # (127.0.0.1) for security reasons. However it is possible to change this.
+  apiServerAddress: "${apiaddr}"
+  # By default the API server listens on a random open port.
+  # You may choose a specific port but probably don't need to in most cases.
+  # Using a random port makes it easier to spin up multiple clusters.
+  # apiServerPort: 6443
+nodes:
+- role: control-plane
+  image: kindest/node:v1.22.9@sha256:6e57a6b0c493c7d7183a1151acff0bfa44bf37eb668826bf00da5637c55b6d5e
+EOF
+
+        kind create cluster --name ${name} --config kind_config.yaml
         kind get kubeconfig --name ${name} > ~/.kube/${name}.kconf
     fi
 
@@ -36,17 +60,17 @@ function create_cluster {
  
 #k3d kubeconfig get ${K3D_NAMEPRFX}1 > ~/.kube/${K3D_NAMEPRFX}1.kconf
 
-create_cluster ${K3D_NAMEPRFX}1
+create_cluster ${K3D_NAMEPRFX}1 ${K8S_API_ADDR} 0
 
 for (( cur_cluster=0; cur_cluster < $K3D_NUMPEERS; cur_cluster++))
 do
 
-    K3D_API_PORT=$((${K3D_API_PORT} + 1))
     # peers offset starts at 2
     cluster_name=${K3D_NAMEPRFX}$((${cur_cluster} + 2))
 
-    create_cluster $cluster_name
+    create_cluster $cluster_name ${K8S_API_ADDR} $((${cur_cluster} + 1))
 
+    # -- OLD CODE --
     # Bringup "peer" k3d instance (use network k3d-${K3D_NAMEPRFX}1 created by k3d in prior command)
     #k3d cluster create ${cluster_name} --no-lb --api-port ${K3D_API_ADDR}:${K3D_API_PORT} --network k3d-${K3D_NAMEPRFX}1 --k3s-arg '--disable=servicelb' --k3s-arg '--disable=traefik' ${K3D_API_SAN:- --k3s-arg "--tls-san=${K3D_API_SAN}"} --k3s-arg '--disable-network-policy' --k3s-arg '--flannel-backend=none' --k3s-arg 'cloud-provider=external' --k3s-arg '--disable-cloud-controller' --volume "$(pwd)/calico.yaml:/var/lib/rancher/k3s/server/manifests/calico.yaml" --volume $(pwd)/resolv.conf:/etc/resolv.conf 
     #k3d kubeconfig get ${cluster_name} > ~/.kube/${cluster_name}.kconf
