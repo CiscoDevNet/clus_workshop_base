@@ -1,6 +1,8 @@
-FROM developenv/devenv-pyats-base:v0.0.117f89a
+FROM developenv/devenv-pyats-base:latest
 
 USER root
+
+RUN apk upgrade --update --available
 
 # > VPN Setup
 RUN set -xe \
@@ -13,7 +15,9 @@ RUN set -xe \
                linux-headers \
                libevent \
                openconnect \
-               openssh
+               openssh \
+               libproxy \
+               libproxy-dev
 
 COPY config/startvpn.sh /usr/local/bin/startvpn.sh
 RUN chmod u+x /usr/local/bin/startvpn.sh

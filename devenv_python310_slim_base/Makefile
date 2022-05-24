@@ -1,6 +1,6 @@
-IMAGENAME := "developenv/devenv_python_310_slim"
-VERSION := "0.98"
-INSTANCENAME := "devenv_python_310_slim"
+IMAGENAME := "developenv/devenv-python310-slim"
+VERSION := "latest"
+INSTANCENAME :="devenv-tf-ansible"
 
 build:
 	@echo "Building image $(IMAGENAME)"
