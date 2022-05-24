@@ -1,6 +1,6 @@
-IMAGENAME := "developenv/devenv-python310-slim"
+IMAGENAME := "developenv/devenv-jupyter"
 VERSION := "latest"
-INSTANCENAME :="devenv-tf-ansible"
+INSTANCENAME :="devenv-jupyter"
 
 build:
 	@echo "Building image $(IMAGENAME)"
