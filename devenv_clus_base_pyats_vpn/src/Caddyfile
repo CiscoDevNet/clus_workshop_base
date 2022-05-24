@@ -1,0 +1,21 @@
+:8080 {
+
+    @5001 {
+        path /app
+    }
+
+    reverse_proxy @5001 127.0.0.1:5001
+
+    @5002 {
+        path /app2
+    }
+
+    reverse_proxy @5002 127.0.0.1:5002
+
+    @5003 {
+        path /app3
+    }
+
+    reverse_proxy @5003 127.0.0.1:5003
+
+}
