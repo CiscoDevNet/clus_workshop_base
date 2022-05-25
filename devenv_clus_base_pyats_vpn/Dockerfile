@@ -1,5 +1,4 @@
 FROM ciscotestautomation/pyats:latest
-FROM python:3.10-slim
 
 COPY /config/wrapper_script_Y.sh /pyats/workspace.init
 COPY /config/wrapper_script.sh /pyats/workspace.init
@@ -72,8 +71,6 @@ RUN useradd -m developer
 # Exposing external ports, esp for caddy
 EXPOSE 8080
 EXPOSE 9090
-EXPOSE 9091
-EXPOSE 9092
 
 # Setting sane PS1 to prevent container oddities.  Also pathing
 RUN echo 'export PS1="\u:\W > "' >> /home/developer/.bashrc
@@ -89,5 +86,5 @@ RUN pip install --user -r /home/developer/requirements_cache.txt
 RUN rm /home/developer/requirements_cache.txt
 WORKDIR /home/developer/src
 
-# Now lets launch this business
-CMD ["bash", "-c", "/usr/local/bin/wrapper_script.sh Y"]
+
+CMD ["bash", "-c", "sleep 60 && /usr/local/bin/wrapper_script.sh Y"]
