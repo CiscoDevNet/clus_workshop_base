@@ -1,7 +1,6 @@
 FROM ciscotestautomation/pyats:latest
 
 COPY /config/wrapper_script_Y.sh /pyats/workspace.init
-COPY /config/wrapper_script.sh /pyats/workspace.init
 
 # Installing applications needed for runtime.  Cleaning up because the maid don't clean containers
 RUN apt update
@@ -86,5 +85,4 @@ RUN pip install --user -r /home/developer/requirements_cache.txt
 RUN rm /home/developer/requirements_cache.txt
 WORKDIR /home/developer/src
 
-
-CMD ["bash", "-c", "sleep 60 && /usr/local/bin/wrapper_script.sh Y"]
+CMD ["bash", "-c", "/usr/local/bin/wrapper_script.sh Y"]

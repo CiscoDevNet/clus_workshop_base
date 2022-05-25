@@ -1,4 +1,4 @@
 
 #!/bin/bash
 
-/usr/local/wrapper_script.sh Y
+/usr/local/bin/wrapper_script.sh Y
