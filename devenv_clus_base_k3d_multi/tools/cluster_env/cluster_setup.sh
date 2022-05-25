@@ -8,6 +8,9 @@ K3D_NAMEPRFX=${K3D_NAMEPRF:-demo}
 GLOBAL_METALLB_PRFX=${GLOBAL_METALLB_PRFX:-250}
 K3D_API_PORT=${K3D_API_PORT:-6135}
 K3D_NUMPEERS=${K3D_NUMPEERS:-1}
+# https://github.com/kubernetes-sigs/kind/releases/tag/v0.11.1
+KIND_IMAGE=${KIND_IMAGE:-kindest/node:v1.19.11@sha256:07db187ae84b4b7de440a73886f008cf903fcf5764ba8106a9fd5243d6f32729}
+#KIND_IMAGE=${KIND_IMAGE:-kindest/node:v1.21.1@sha256:69860bda5563ac81e3c0057d654b5253219618a22ec3a346306239bba8cfa1a6}
 
 if [[ -z ${K8S_API_ADDR} ]]; then
     K8S_API_ADDR=$(hostname -i)
@@ -46,7 +49,7 @@ networking:
   # apiServerPort: 6443
 nodes:
 - role: control-plane
-  image: kindest/node:v1.22.9@sha256:6e57a6b0c493c7d7183a1151acff0bfa44bf37eb668826bf00da5637c55b6d5e
+  image: ${KIND_IMAGE}
 EOF
 
         kind create cluster --name ${name} --config kind_config.yaml

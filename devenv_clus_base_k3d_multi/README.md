@@ -1,6 +1,6 @@
-# K3D Multicluster Setup
+# SMM Multicluster Setup on KinD or k3d
 
-This dev/demo environment is for building out multicluster scenarios.  It sets up k3d clusters (k3d is to k3s as KinD is to K8s).
+This dev/demo environment is for building out multicluster scenarios.  It sets up KinD or k3d clusters (k3d is to k3s as KinD is to K8s).
 
 ## Usage
 
@@ -17,17 +17,29 @@ Options:
 2.  Otherwise use docker directly:
 
     ```
-    docker run --privileged --name devenv-k3d -d --rm -p 1001:9090 -p 30880:8080 -e "DEVENV_PASSWORD=secret" -e "DEVENV_PASSWORD=secret" -e "DEVENV_APP_URL=http://localhost:8080" containers.cisco.com/tiswanso/devenv-base-k3d:latest
+    docker run --privileged --name devenv-k3d -d --rm -p 1001:9090 -p 30880:8080 -e "DEVENV_AUTOSTART=true"  containers.cisco.com/tiswanso/devenv-base-k3d:latest
     ```
 
 Once up, new terminals can be instantiated via opening browser tabs to `localhost:1001/?arg=secret`
 
+With the `DEVENV_AUTOSTART=true` environment variable setting, the full 2 cluster setup with SMM install and peer cluster attach
+is executed as part of the container's default startup script `/home/developer/bin/devenv-init.sh` 
+(src = [devenv-init.sh](devenv/devenv-init.sh)).  The same can be done without the autostart env var via a terminal executing
+`/home/developer/tools/full_setup.sh` (src = [full_setup.sh](tools/full_setup.sh)).
+
+## Details
+
+The following explains the steps to create the setup done by [full_setup.sh](tools/full_setup.sh**.  The individual steps can be
+varied to utilize the container for many more customized scenarios.
+
+**NOTE:** The intial work with this container devenv was done with k3d so some names and examples refer to the k3d setup.
+
 ### Cluster setup
 
-To create a pair of k3d clusters on the same docker network with metallb configured as the k8s service loadbalancer:
+To create a pair of clusters on the same docker network with metallb configured as the k8s service loadbalancer:
 
 ```
-cd /home/developer/tools/cluster-env
+cd /home/developer/tools/cluster_env
  ./cluster_setup.sh
 ```
 
