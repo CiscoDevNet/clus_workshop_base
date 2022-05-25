@@ -17,7 +17,6 @@ ENV TERRAFORM_VERSION 1.1.9
 
 # Copy over files & change their ownership to developer.
 COPY /root/home/developer/bin/* /home/developer/bin/
-COPY /root/home/developer/src /home/developer/src
 RUN chown -R developer: /home/developer
 RUN cd /usr/local/bin && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
