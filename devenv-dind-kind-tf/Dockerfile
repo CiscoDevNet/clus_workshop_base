@@ -1,16 +1,17 @@
-FROM developenv/devenv-base-bootstrap-dind-kind:latest
+FROM developenv/devenv-base-bootstrap-dind:v0.0.e170b6c
 
 USER root
 
-RUN rm -rf /home/developer/src
+COPY /root/home/developer/bin/* /home/developer/bin/
 
-COPY src /home/developer/src
+ENV DOCKER_HOST="unix:///var/run/docker.sock"
 
-RUN chown -R developer: /home/developer
-
-RUN apk add linux-headers libffi-dev nano
-
-RUN pip3 install -r /home/developer/src/requirements.txt
+# K8s
+RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && \
+    install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl && \
+    rm kubectl
+RUN curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.12.0/kind-linux-amd64 && chmod +x ./kind && mv ./kind /usr/local/bin
+RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
 ENV TERRAFORM_VERSION 1.1.9
 
