@@ -16,9 +16,9 @@ RUN curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | b
 ENV TERRAFORM_VERSION 1.1.9
 
 # Copy over files & change their ownership to developer.
-COPY /root/home/developer/bin/* /home/developer/bin/
 RUN chown -R developer: /home/developer
 RUN cd /usr/local/bin && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip -o terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip 
+USER developer
