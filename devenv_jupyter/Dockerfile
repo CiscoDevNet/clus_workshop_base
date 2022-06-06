@@ -80,6 +80,8 @@ RUN chmod 755 /home/developer/requirements_cache.txt
 COPY src /home/developer/src
 RUN chown -R developer:developer /home/developer
 USER developer
+RUN mkdir /home/developer/.jupyter
+COPY .jupyter /home/developer/.jupyter
 RUN pip install --user -r /home/developer/requirements_cache.txt
 RUN rm /home/developer/requirements_cache.txt
 WORKDIR /home/developer/src
