@@ -1,0 +1,8 @@
+spec:
+  smm:
+    exposeDashboard:
+      meshGateway:
+        enabled: true
+    auth:
+      forceUnsecureCookies: true
+      mode: anonymous
