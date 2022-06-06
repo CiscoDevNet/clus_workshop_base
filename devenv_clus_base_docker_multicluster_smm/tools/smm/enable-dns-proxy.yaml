@@ -1,0 +1,14 @@
+spec:
+  meshManager:
+    istio:
+        istioCROverrides: |
+          spec:
+            meshConfig:
+              defaultConfig:
+                proxyMetadata:
+                  # Enable basic DNS proxying
+                  ISTIO_META_DNS_CAPTURE: "true"
+                  # Enable automatic address allocation, optional
+                  ISTIO_META_DNS_AUTO_ALLOCATE: "true"
+                  ISTIO_META_ALS_ENABLED:  "true"
+                  PROXY_CONFIG_XDS_AGENT:  "true"

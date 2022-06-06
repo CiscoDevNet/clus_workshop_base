@@ -1,0 +1,6 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: authentication
+          image: containers.cisco.com/tiswanso/authentication:insecure-dash
