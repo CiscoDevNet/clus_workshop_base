@@ -4,6 +4,7 @@ FROM python:3.10-slim
 RUN apt update
 RUN apt install -y --no-install-recommends \
         bash \
+        jq \
         build-essential \
         libsqlite3-dev \
         curl \
@@ -58,9 +59,15 @@ RUN curl -L -s -o sentinel.zip https://releases.hashicorp.com/sentinel/0.18.9/se
     unzip sentinel.zip -d /usr/bin/ && chmod 755 /usr/bin/sentinel && rm -rf sentinel.zip
 
 # Installing the Caddy server for reverse proxy
-RUN curl -o caddy "https://caddyserver.com/api/download?os=linux&arch=amd64&idempotency=3754473143692" && \
-    chmod +x caddy && \
-    mv caddy /usr/local/bin/
+#RUN curl -o caddy "https://caddyserver.com/api/download?os=linux&arch=amd64&idempotency=3754473143692" && \
+#    chmod +x caddy && \
+#    mv caddy /usr/local/bin/
+
+RUN apt install -y debian-keyring debian-archive-keyring apt-transport-https
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+RUN apt update
+RUN apt install caddy
 
 # Setting up the openconnect bits.  I don't like permissions on the log, but it wouldn't work until I went all in
 RUN mkdir /var/log/openconnect && touch /var/log/openconnect/openconnect.log && chmod 777 /var/log/openconnect/openconnect.log
